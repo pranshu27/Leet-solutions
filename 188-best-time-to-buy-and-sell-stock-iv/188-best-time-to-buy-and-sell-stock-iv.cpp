@@ -7,18 +7,13 @@ public:
         
         if(dp[tran][i]!=-1) return dp[tran][i];
         
-        if(tran%2==0) return dp[tran][i] = max({
-            -prices[i] + (dp[tran+1][i+1]!=-1? dp[tran+1][i+1]:solve(prices, tran+1, i+1, k)),
-            (dp[tran][i+1]!=-1? dp[tran][i+1]:solve(prices, tran, i+1, k))
-            
-        });
+        int a = (dp[tran+1][i+1]!=-1? dp[tran+1][i+1]:solve(prices, tran+1, i+1, k));
+        int b = (dp[tran][i+1]!=-1? dp[tran][i+1]:solve(prices, tran, i+1, k));
+        
+        if(tran%2==0) return dp[tran][i] = max(-prices[i]+a, b);
         else
         {
-            return dp[tran][i] = max({
-            prices[i] + (dp[tran+1][i+1]!=-1? dp[tran+1][i+1]:solve(prices, tran+1, i+1, k)),
-            (dp[tran][i+1]!=-1? dp[tran][i+1]:solve(prices, tran, i+1, k))
-            
-        });
+            return dp[tran][i] = max(prices[i]+a, b);
         }
         
         
