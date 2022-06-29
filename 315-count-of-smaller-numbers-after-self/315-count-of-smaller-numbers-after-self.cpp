@@ -10,10 +10,11 @@ public:
             if(v[i].first <= v[j].first)
             {
                 tmp[k++] = v[j++];
+                
             }
             else
-            {
-                out[v[i].second]+= r - j + 1;
+            { 
+                out[v[i].second]+= r-j+1;
                 tmp[k++] = v[i++];
             }
         }
