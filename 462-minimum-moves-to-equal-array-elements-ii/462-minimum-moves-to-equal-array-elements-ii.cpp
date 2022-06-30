@@ -31,7 +31,7 @@ public:
                 return nums[pi];
             }
             
-            if(pi>find)
+            if(pi>=find)
                 return quick(nums, l, pi-1, find);
             
             else
