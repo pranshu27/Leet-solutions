@@ -2,8 +2,7 @@ class Solution {
 public:
     int partition(vector<int>& nums, int l, int h)
     {
-        int num = l + rand()%(h-l+1);
-        swap(nums[h], nums[num]);
+
         int i=l,j,pi=h;
         for(j=l; j<h; j++)
         {
@@ -50,7 +49,7 @@ public:
         
         
         int median = quick(nums,0,n-1,n/2);
-        cout<<median;
+       
         for (int i=0;i<nums.size();i++) sum += abs(nums[i] - median);
         return sum;
 
