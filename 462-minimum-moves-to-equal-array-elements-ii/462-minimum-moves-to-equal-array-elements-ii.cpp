@@ -1,38 +1,56 @@
 class Solution {
 public:
-    
-    int partition(vector<int> nums, int low, int high){
-        int pivot = nums[high];
-        int pos = low;
-        
-        for(int i=low; i<=high; i++){
-            if(nums[i]<pivot){
-                swap(nums[i], pivot);
-                pos++;
+    int partition(vector<int>& nums, int l, int h)
+    {
+        int num = l + rand()%(h-l+1);
+        swap(nums[h], nums[num]);
+        int i=l,j,pi=h;
+        for(j=l; j<h; j++)
+        {
+            if(nums[j]<nums[pi])
+            {
+                
+                swap(nums[i], nums[j]);
+                i++;
             }
         }
         
-        swap(nums[pos], nums[high]);
-        return pos;
+        swap(nums[i], nums[pi]);
+        return i;
     }
     
-    int findMedian(vector<int>& nums,int k, int low, int high)
+    int quick(vector<int>& nums, int l, int h, int find)
     {
-        int pos = partition(nums, low, high);
-        if(pos==k-1) return nums[pos];
+        if(l<=h)
+        {
+            int pi = partition(nums, l, h);
+            
+            if(pi==find)
+            {
+               
+                return nums[pi];
+            }
+            
+            if(pi>find)
+                return quick(nums, l, pi-1, find);
+            
+            else
+                return quick(nums, pi+1, h, find);
+        }
         
-        if(pos<k-1) return findMedian(nums, k, pos+1, high);
-        else return findMedian(nums, k, low, pos-1);
+        return -1;
     }
+    
+
+    
     int minMoves2(vector<int>& nums) {
-        sort(nums.begin(), nums.end());
+        
         
         int n = nums.size(), sum=0;
         
-        if(n==2) return abs(nums[0]-nums[1]);
         
-        int median = findMedian(nums, n/2 + 1,0,n-1);
-        //cout<<median;
+        int median = quick(nums,0,n-1,n/2);
+        cout<<median;
         for (int i=0;i<nums.size();i++) sum += abs(nums[i] - median);
         return sum;
 
