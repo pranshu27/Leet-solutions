@@ -16,7 +16,6 @@ public:
             
             int mid = low + (high-low)/2;
             count = countLessThanK(m,n,mid);
-            //cout<<mid<<" "<<count<<endl;
             if(count<k) low = mid+1;
             else high = mid-1;
         }
