@@ -2,6 +2,9 @@ class Solution {
 public:
     static
     int maxArea(int h, int w, vector<int>& hc, vector<int>& vc) {
+        ios_base::sync_with_stdio(false);
+        cin.tie(NULL);
+        cout.tie(0);
         
         sort(hc.begin(), hc.end());
         sort(vc.begin(), vc.end());
