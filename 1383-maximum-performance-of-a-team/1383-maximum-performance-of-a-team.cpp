@@ -16,6 +16,7 @@ public:
          
         long long overall=0, maxx = -1;
         for(int i=0; i<n; i++){
+            //cout<<eng[i].first<<" "<<eng[i].second<<endl;
             long long curr_min = eng[i].first;
             
             long long ts = overall + eng[i].second;
@@ -29,8 +30,10 @@ public:
             if(pq.size()>k-1)
             {
                 overall-=pq.top();
+                //cout<<pq.top()<<endl;
                 pq.pop();
             }
+            
         }
         
         return maxx%1000000007 ;
