@@ -31,7 +31,7 @@ public:
                 
                 long long ele = arr[i]/arr[j];
                 if(bs(arr, ele, n)) {
-                    curr+=(mp[arr[j]]%mod*mp[ele]%mod) %mod;
+                    curr+=(mp[arr[j]]%mod*mp[ele]%mod)%mod;
                     curr%=mod;
                 }
             }
