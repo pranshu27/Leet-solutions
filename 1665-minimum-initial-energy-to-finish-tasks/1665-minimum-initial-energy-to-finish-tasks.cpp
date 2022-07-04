@@ -11,7 +11,7 @@ public:
         return true;
     }
 
-    int minimumEffort(vector<vector<int>>& t) {
+    int minimumEffort(vector<vector<int>>&t) {
         sort(t.begin(), t.end(), [](vector<int> &t1, vector<int> &t2) 
          { return t1[1] - t1[0] > t2[1] - t2[0]; });
         int r = 1000000000, l= 1;
