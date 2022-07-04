@@ -1,21 +1,42 @@
 class Solution {
-public:
-    
-
-    int minimumEffort(vector<vector<int>>& t) {
-        
-
-        sort(t.begin(), t.end(), [](vector<int> &t1, vector<int> &t2) 
-         { return t1[1] - t1[0] > t2[1] - t2[0]; });
-            
-        int energy = 0, ans = 0;
-        for(vector<int> it: t)
+    bool fun(int mid, vector<vector<int>>&tasks)
+    {
+        int energy = mid;
+        for(int i=0;i<tasks.size();i++)
         {
-            ans += max(0, it[1] - energy);
-            energy = max(energy, it[1]) - it[0];
+            if(energy >= tasks[i][1])
+            {
+                energy -= tasks[i][0];
+            }
+            else
+                return false;
         }
+        if(energy >=0)
+            return true;
         
-        return ans;
+        return false;
+    }
+    static bool myfun(vector<int>&a, vector<int>&b)
+    {
+        return (a[1] - a[0]) > (b[1] - b[0]);
+    }
+public:
+    int minimumEffort(vector<vector<int>>& tasks) {
+        sort(tasks.begin(), tasks.end(), myfun);
+        int answer = 0;
+        int l= 1, r= 100000000000;
+        while(l <= r)
+        {
+            int mid = (l+r)/2;
+            if(fun(mid,tasks))
+            {
+                answer = mid;
+                r = mid-1;
+            }
+            else
+                l = mid+1;
+        }
+        return answer;
         
     }
 };
