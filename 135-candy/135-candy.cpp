@@ -1,37 +1,27 @@
 class Solution {
 public:
-    int candy(vector<int>& arr) {
-        
-        int n = arr.size();
-        vector<int> out(n, 1);
-        
-        int j, curr;
-        int sum = 0;
-        for(int i=0; i<n-1;)
-        {
-            if(i+1<n && arr[i+1]>arr[i]) {
-                out[i+1] = out[i]+1;
-                i++;
-            }
-            else if(i+1<n && arr[i+1]<arr[i])
-            {
-                j = i;
-                while(j+1<n && arr[j+1]<arr[j]) j++;
-                curr = j-i+1;
-                out[i] = max(out[i], curr); 
-                j = i+1;
-                while(j+1<n && arr[j+1]<arr[j]) {
-                    out[j] = --curr;
-                    j++;
-                }
-                i=j;
-            }
-            else {
-                i++;
-            }
-
-        }
-        for(int it: out) sum+=it;
-        return sum;
-    }
+    int candy(vector<int> &ratings)
+     {
+         int size=ratings.size();
+         if(size<=1)
+             return size;
+         vector<int> num(size,1);
+         for (int i = 1; i < size; i++)
+         {
+             if(ratings[i]>ratings[i-1])
+                 num[i]=num[i-1]+1;
+         }
+         for (int i= size-1; i>0 ; i--)
+         {
+             if(ratings[i-1]>ratings[i])
+                 num[i-1]=max(num[i]+1,num[i-1]);
+         }
+         int result=0;
+         for (int i = 0; i < size; i++)
+         {
+             result+=num[i];
+            // cout<<num[i]<<" ";
+         }
+         return result;
+     }
 };
