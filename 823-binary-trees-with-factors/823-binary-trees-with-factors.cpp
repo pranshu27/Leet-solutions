@@ -1,8 +1,8 @@
 class Solution {
 public:
-    bool bs(vector<int>& arr, int ele, int n)
+    bool bs(vector<int>& arr, int ele, int n, int i)
     {
-        int f = 0, l = n-1;
+        int f = 0, l = i;
         while(f<l)
         {
             int mid = (f+l)>>1;
@@ -30,7 +30,7 @@ public:
                 }
                 
                 long long ele = arr[i]/arr[j];
-                if(bs(arr, ele, n)) {
+                if(bs(arr, ele, n, i)) {
                     curr+=(mp[arr[j]]%mod*mp[ele]%mod)%mod;
                     curr%=mod;
                 }
