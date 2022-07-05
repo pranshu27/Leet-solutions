@@ -5,15 +5,16 @@ public:
         
         int res = 0;
         for(int i:nums){
-            if(m.find(i)==m.end()){
+            if(m.find(i)==m.end()){ //to avoid duplicates
                 int left = m.find(i-1)!=m.end()?m[i-1]:0;
                 int right = m.find(i+1)!=m.end()?m[i+1]:0;
 
                 res = max(res, left + right + 1);
 
                 m[i] = left + right + 1;
-
-                m[i-left] = left + right + 1;
+                
+                //reflect the corresponding changes to the boundaries
+                m[i-left] = left + right + 1; 
                 m[i+right] = left + right + 1;
             }
             
