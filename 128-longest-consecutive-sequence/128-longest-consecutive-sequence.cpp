@@ -4,10 +4,11 @@ public:
         unordered_map<int, int> m;
         
         int res = 0;
-        for(int i:nums){
+        int left, right;
+        for(int &i:nums){
             if(m.find(i)==m.end()){ //to avoid duplicates
-                int left = m.find(i-1)!=m.end()?m[i-1]:0;
-                int right = m.find(i+1)!=m.end()?m[i+1]:0;
+                left = m.find(i-1)!=m.end()?m[i-1]:0;
+                right = m.find(i+1)!=m.end()?m[i+1]:0;
 
                 res = max(res, left + right + 1);
 
