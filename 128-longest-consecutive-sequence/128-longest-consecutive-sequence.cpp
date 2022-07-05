@@ -1,6 +1,7 @@
 class Solution {
 public:
     int longestConsecutive(vector<int>& nums) {
+        ios::sync_with_stdio(0);cin.tie(0);
         unordered_map<int, int> m;
         
         int res = 0;
