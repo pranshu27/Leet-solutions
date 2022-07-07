@@ -1,7 +1,7 @@
 class Solution {
 public:
     int dp[101][101][201];
-    bool solve(int i, int j, int k, int n1, int n2, int n3, string &s1, string &s2, string &s3)
+    bool solve(int i, int j, int k, int &n1, int &n2, int &n3, string &s1, string &s2, string &s3)
     {
         if(i==n1 && j==n2 && k==n3) return true;
         if(dp[i][j][k]!=-1) return dp[i][j][k];
