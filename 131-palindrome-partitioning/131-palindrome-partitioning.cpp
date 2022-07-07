@@ -2,7 +2,6 @@ class Solution {
 public:
     bool isPalin(string s)
     {
-        //cout<<s<<endl;
         int n = s.size();
         int i=0, j =  n-1;
         while(i<j){
@@ -25,7 +24,7 @@ public:
                 //cout<<"bt\n";
                 tmp.push_back(curr);
                 solve(i+1, s, ans, tmp);
-                tmp.pop_back();
+                tmp.pop_back();//backtrack
             } 
         }
     }
