@@ -7,16 +7,17 @@ public:
         priority_queue<pair<int, int>> pq;
         
         int n = nums.size();
-        int score;
+        int score[n];
+        
         for(int i = n-1; i>=0; i--)
         {
             while(pq.size() && pq.top().second > i+k) pq.pop();
-            score = nums[i];
-            score += pq.size()? pq.top().first: 0;
-            pq.push({score, i});
+            score[i] = nums[i];
+            score[i] += pq.size()? pq.top().first: 0;
+            pq.push({score[i], i});
         }
         
-        return score;
+        return score[0];
     }
     
 };
