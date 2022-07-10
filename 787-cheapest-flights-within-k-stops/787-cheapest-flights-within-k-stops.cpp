@@ -26,7 +26,7 @@ public:
                 for(auto to:adj[u]){
                     auto [v,w] = to;
                     pq.push({cost+w,v,stops+1});
-                    cout<<cost+w<<" "<<v<<" "<<stops+1<<endl;
+                    //cout<<cost+w<<" "<<v<<" "<<stops+1<<endl;
                 }
             }
             for(auto it:s) cout<<it<<" "; cout<<endl;
