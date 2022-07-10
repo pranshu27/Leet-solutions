@@ -14,13 +14,12 @@ public:
         pq.push({0, src, 0});
         
         
-        vector<int> s(n, 102);
+        vector<int> s(n, 102); // extra array used for storing stops
         
         while(!pq.empty()){
             auto [cost,u,stops] = pq.top();
             pq.pop();
             if(u==dst)  return cost;
-            //if(!stops)  continue;
             
             if(stops<s[u] && stops<=k){
                 s[u] = stops;
