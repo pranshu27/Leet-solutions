@@ -11,22 +11,20 @@
  */
 class Solution {
 public:
-    
-    map<int, vector<int>> v;
-    
-    void solve(TreeNode *root, int level){
-        if(!root) return;
-        
-        v[level].push_back(root->val);
-        solve(root->left, level+1);
-        solve(root->right, level+1);
+    vector<vector<int> > ret;
+    void buildVector(TreeNode *root, int depth)
+    {
+        if(root == NULL) return;
+        if(ret.size() == depth)
+            ret.push_back(vector<int>());
+
+        ret[depth].push_back(root->val);
+        buildVector(root->left, depth + 1);
+        buildVector(root->right, depth + 1);
     }
-    
-    vector<vector<int>> levelOrder(TreeNode* root) {
-        
-        solve(root, 0);
-        vector<vector<int>> out;
-        for(auto it: v) out.push_back(it.second);
-        return out;
+
+    vector<vector<int> > levelOrder(TreeNode *root) {
+        buildVector(root, 0);
+        return ret;
     }
 };
