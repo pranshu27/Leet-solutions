@@ -6,7 +6,8 @@ public:
         sort(nums.begin(), nums.end());
         for(int i=0; i<n; i++)
         { 
-            if(i>0 && nums[i]==nums[i-1]) {
+            if(nums[i]>0) break;
+            if(i>0 && nums[i]==nums[i-1]&& out.size()!=0) {
                 continue;
             }
             for(int j=i+1, k = n-1; j<k; ){
