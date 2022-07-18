@@ -15,6 +15,8 @@ public:
             }
         }
         
+        //calculate prefix subarray row wise
+        
         int count = 0;
         for(int start = 0; start<n; start ++)
         {
@@ -23,15 +25,11 @@ public:
                 mp.clear();
                 int sum = 0;
                 
-                
                 for(int i=0; i<m; i++)
                 {
                     sum += arr[i][end] - ((start>0)? arr[i][start-1]: 0);
-                    
                     if(sum == target) count++;
-                    
-                    count+=mp[sum - target];
-                    
+                    count+=mp[sum - target]; // agar sum-target hai to target ka ek aur submatrix mil gaya hai
                     mp[sum]++;
                 }
             }
