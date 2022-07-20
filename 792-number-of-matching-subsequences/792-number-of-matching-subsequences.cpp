@@ -2,7 +2,7 @@ class Solution {
 public:
     int numMatchingSubseq(string s, vector<string>& words) {
         
-        vector<vector<int>> mp(26) , tmp(26);
+        vector<vector<int>> mp(26);
         for(int i = 0; i<s.size(); i++) {
             mp[s[i] - 'a'].push_back(i);
         }
