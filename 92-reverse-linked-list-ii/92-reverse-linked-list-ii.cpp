@@ -19,7 +19,7 @@ public:
        }
        cur = pre -> next;
        for (int i = 0; i < n - m; i++) {
-           cout<<pre->val<<" "<<cur->val<<endl;
+          // cout<<pre->val<<" "<<cur->val<<endl;
            ListNode* temp = pre -> next;
            pre -> next = cur -> next;
            cur -> next = cur -> next -> next;
