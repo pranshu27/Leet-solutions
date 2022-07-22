@@ -9,7 +9,7 @@ public:
         
         int res = 0;
         
-        for( auto &word: words){
+        for( auto word: words){
             bool found = true;
             //cout<<word<<endl;
             int x = -1;
