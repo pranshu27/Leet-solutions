@@ -11,7 +11,7 @@ public:
         
         for(const auto &word: words){
             bool found = true;
-            cout<<word<<endl;
+            //cout<<word<<endl;
             int x = -1;
             for(char c: word){
                 auto it = upper_bound( mp[c-'a'].begin(), mp[c-'a'].end(), x);
