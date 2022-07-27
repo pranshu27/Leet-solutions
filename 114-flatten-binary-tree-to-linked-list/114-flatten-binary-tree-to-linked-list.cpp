@@ -26,7 +26,6 @@ public:
         return root;
     }
     void flatten(TreeNode* root) {
-        
         solve(root);
     }
 };
