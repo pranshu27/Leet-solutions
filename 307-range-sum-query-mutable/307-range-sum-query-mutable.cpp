@@ -17,9 +17,9 @@ public:
             return;
         }
         int mid = (left+right)>>1;
-        buildTree(nums, 2*pos+1, left, mid);
-        buildTree(nums, 2*pos+2, mid+1, right);
-        seg[pos]=seg[2*pos+1]+ seg[2*pos+2];
+        buildTree(nums, (pos<<1)+1, left, mid);
+        buildTree(nums, (pos<<1)+2, mid+1, right);
+        seg[pos]=seg[(pos<<1)+1]+ seg[(pos<<1)+2];
     }
 
     // Function to update a node in the segment tree
@@ -49,9 +49,9 @@ public:
 
         // partial overlap
         int mid=(left+right)>>1;
-        updateUtil(2*pos+1,left,mid,index,val); // left child
-        updateUtil(2*pos+2,mid+1,right,index,val); // right child
-        seg[pos]=seg[2*pos+1]+seg[2*pos+2];
+        updateUtil((pos<<1)+1,left,mid,index,val); // left child
+        updateUtil((pos<<1)+2,mid+1,right,index,val); // right child
+        seg[pos]=seg[(pos<<1)+1]+seg[(pos<<1)+2];
     }
 
     // Function to get the sum from the range [qlow, qhigh]
@@ -74,7 +74,7 @@ public:
         }
         // partial overlap
         int mid = (low+high)>>1;
-        return (rangeUtil(qlow, qhigh, low, mid, 2*pos+1) + rangeUtil(qlow, qhigh, mid+1, high, 2*pos+2));
+        return (rangeUtil(qlow, qhigh, low, mid, (pos<<1)+1) + rangeUtil(qlow, qhigh, mid+1, high, (pos<<1)+2));
     }
     
     // Constructor for initializing the variables.
