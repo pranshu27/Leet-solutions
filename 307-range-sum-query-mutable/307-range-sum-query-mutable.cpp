@@ -16,7 +16,7 @@ public:
             seg[pos] = nums[left]; 
             return;
         }
-        int mid = (left+right)/2;
+        int mid = (left+right)>>1;
         buildTree(nums, 2*pos+1, left, mid);
         buildTree(nums, 2*pos+2, mid+1, right);
         seg[pos]=seg[2*pos+1]+ seg[2*pos+2];
@@ -48,7 +48,7 @@ public:
         }
 
         // partial overlap
-        int mid=(left+right)/2;
+        int mid=(left+right)>>1;
         updateUtil(2*pos+1,left,mid,index,val); // left child
         updateUtil(2*pos+2,mid+1,right,index,val); // right child
         seg[pos]=seg[2*pos+1]+seg[2*pos+2];
@@ -73,7 +73,7 @@ public:
             return 0;
         }
         // partial overlap
-        int mid = low+(high-low)/2;
+        int mid = (low+high)>>1;
         return (rangeUtil(qlow, qhigh, low, mid, 2*pos+1) + rangeUtil(qlow, qhigh, mid+1, high, 2*pos+2));
     }
     
