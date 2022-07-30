@@ -3,10 +3,10 @@ public:
     vector<string> wordSubsets(vector<string>& words1, vector<string>& words2) {
         vector<int> f(26,0);
         //overall array for frequency of b
-        for(string w: words2)
+        for( const string &w: words2)
         {
             vector<int> tmp(26, 0); //temporary array
-            for(char c:w){
+            for(const char &c:w){
                 tmp[c-'a']++;
                 f[c-'a'] = max(tmp[c-'a'], f[c-'a']);
             }
@@ -15,9 +15,9 @@ public:
         
         vector<string> out;
         
-        for(string w:words1){
+        for(const string &w:words1){
             vector<int> tmp(26);
-            for(char c: w)
+            for(const char &c: w)
             {
                 tmp[c-'a']++;
             }
@@ -31,9 +31,6 @@ public:
         
             if(i==26) out.push_back(w);
         }
-        
         return out;
-        
-        
     }
 };
