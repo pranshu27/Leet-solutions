@@ -39,8 +39,6 @@ void merge(vector<long>& prefix, int l, int m, int r, int lower, int upper,
     // put possible remaining left part to the sorted array
     while (i <= m)
       sorted[k++] = prefix[i++];
-
-    // put possible remaining right part to the sorted array
     while (j <= r)
       sorted[k++] = prefix[j++];
 
