@@ -7,25 +7,15 @@ public:
     }
     int minOperations(vector<int>& nums, vector<int>& numsDivide) {
         int c = 0;
-        priority_queue<int,vector<int>,greater<int>> pq; 
+        sort(begin(nums), end(nums));
         int op = numsDivide[0];
         int n = numsDivide.size();
         for(int i = 1;i < n;i++){
             op = (op>numsDivide[i])? findGCD(op,numsDivide[i]): findGCD(numsDivide[i], op); 
         }
-        for(const int &i : nums){
-            pq.push(i); 
-        } 
-        while(!pq.empty()){ 
-            int temp = pq.top();
-            pq.pop();
-            if(op%temp == 0){ 
-                return c;
-            }
-
-            c++;
-            
-        }
+        for (int i = 0; i < nums.size(); ++i)
+            if (op % nums[i] == 0)
+                return i;
         return -1;
     }
 };
