@@ -1,20 +1,25 @@
 class Solution {
 public:
+    int findGCD(int a, int b) //Euclids GCD algo
+    {
+        if(b==0) return a;
+        return findGCD(b, a%b);
+    }
     int minOperations(vector<int>& nums, vector<int>& numsDivide) {
-        int c = 0; // count
-        priority_queue<int,vector<int>,greater<int>> pq; /// min heap
+        int c = 0;
+        priority_queue<int,vector<int>,greater<int>> pq; 
         int op = numsDivide[0];
         int n = numsDivide.size();
         for(int i = 1;i < n;i++){
-            op = __gcd(op,numsDivide[i]); // as it will be the maximum number that will divide              all the numbers 
+            op = (op>numsDivide[i])? findGCD(op,numsDivide[i]): findGCD(numsDivide[i], op); 
         }
         for(const int &i : nums){
-            pq.push(i); // pushing all elements in the heap
+            pq.push(i); 
         } 
         while(!pq.empty()){ 
             int temp = pq.top();
             pq.pop();
-            if(op%temp == 0){ // if the minimum element divides the gcd return count at that time
+            if(op%temp == 0){ 
                 return c;
             }
 
