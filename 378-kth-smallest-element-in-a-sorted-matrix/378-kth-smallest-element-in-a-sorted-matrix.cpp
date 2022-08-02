@@ -9,7 +9,7 @@ public:
         while(l<h)
         {
             count=0;
-            mid = l + (h-l)/2;
+            mid = (l+h)>>1;
             
             for(int i=0;i<n;i++)
             {
@@ -18,14 +18,9 @@ public:
                 
             }
             
-                if(count<k)
-            {
-                l =mid+1;
-            }
-            else
-            {
-                h=mid;
-            }
+            if(count<k) l=mid+1;
+            else h = mid;
+
             }
            
     
