@@ -1,19 +1,32 @@
 class Solution {
 public:
     int kthSmallest(vector<vector<int>>& arr, int k) {
-        priority_queue<int> pq;
+        using pii = pair<int, int>;
+        
+        
+        auto cmp = [&](pii &a, pii &b){
+            return arr[a.first][a.second] > arr[b.first][b.second];
+        };
+        
+        priority_queue<pii, vector<pii>, decltype(cmp)> pq(cmp);
+        
         int m = arr.size(), n = arr[0].size();
         
-        for(int i=0; i<m; i++)
+        for(int i=0; i<n; i++)
         {
-            for(int j = 0; j<n; j++)
-            {
-                pq.push(arr[i][j]);
-                if(pq.size()>k) pq.pop();
-            }
+            pq.push({0, i}); 
+        }//pushing the first row
+        
+        for(int i=0; i<k-1; i++)
+        {
+            auto [l,r] = pq.top();
+            pq.pop();
+            
+            if(l+1<m) pq.push({l+1, r});
         }
         
-        return pq.top();
+        return arr[pq.top().first][pq.top().second];
+        
         
     }
 };
