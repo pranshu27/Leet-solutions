@@ -12,7 +12,7 @@ public:
             mp[end] = start;
             return true;
         }
-        else  return false;
+        return false;
     }
 };
 
