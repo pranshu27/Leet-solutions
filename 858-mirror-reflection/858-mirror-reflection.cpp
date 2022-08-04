@@ -2,7 +2,7 @@ class Solution {
 public:
     int gcd(int a, int b)
     {
-        if(b == 0) return a;
+        if(!b) return a;
         return gcd(b, a%b);
     }
     
@@ -14,8 +14,8 @@ public:
         int n = lcm/q;
         
         if(m%2==0 && n%2==1) return 0;
-        if(m%2==1 && n%2==1) return 1;
-        if(m%2==1 && n%2==0) return 2;
-        return -1;
+        else if(m%2==1 && n%2==1) return 1;
+        else if(m%2==1 && n%2==0) return 2;
+        else return -1;
     }
 };
