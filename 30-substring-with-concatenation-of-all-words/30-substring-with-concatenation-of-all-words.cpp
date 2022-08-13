@@ -1,6 +1,6 @@
 class Solution {
 public:
-    bool check(unordered_map<string, int> mp, string s, int wordLen)
+    bool check(map<string, int> mp, string &s, int &wordLen)
     {
         for(int i=0; i<s.size(); i+=wordLen)
         {
@@ -15,11 +15,11 @@ public:
     }
     vector<int> findSubstring(string s, vector<string>& words) {
         vector<int> out;
-        unordered_map<string, int> mp;
+        map<string, int> mp;
         
         int n = s.size();
         
-        for(string w: words) mp[w]++;
+        for(const string &w: words) mp[w]++;
         
         int wordLen = words[0].size();
         int countWords = words.size();
