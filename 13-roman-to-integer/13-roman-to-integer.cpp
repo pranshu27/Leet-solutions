@@ -1,24 +1,24 @@
 class Solution {
 public:
-    int prior(char ch)
+    int prior(char &ch)
     {
         if(ch=='M') return 7;
-        else if(ch=='D') return 6;
-        else if(ch=='C') return 5;
-        else if(ch=='L') return 4;
-        else if(ch=='X') return 3;
-        else if(ch=='V') return 2;
+        if(ch=='D') return 6;
+        if(ch=='C') return 5;
+        if(ch=='L') return 4;
+        if(ch=='X') return 3;
+        if(ch=='V') return 2;
         return 1;
     }
     
-    int val(char ch)
+    int val(char &ch)
     {
         if(ch=='M') return 1000;
-        else if(ch=='D') return 500;
-        else if(ch=='C') return 100;
-        else if(ch=='L') return 50;
-        else if(ch=='X') return 10;
-        else if(ch=='V') return 5;
+        if (ch=='D') return 500;
+        if(ch=='C') return 100;
+        if(ch=='L') return 50;
+        if(ch=='X') return 10;
+        if(ch=='V') return 5;
         return 1;
         
         
