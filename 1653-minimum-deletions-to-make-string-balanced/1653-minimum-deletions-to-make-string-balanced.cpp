@@ -1,18 +1,20 @@
 class Solution {
 public:
     int minimumDeletions(string s) {
-        stack<char> st;
-        int count = 0;
-        for(auto &c: s)
+        int countB = 0;
+        
+        int del = 0;
+        
+        for(const char &c: s)
         {
-            if(!st.empty() && c == 'a' && st.top()=='b'){
-                count++;
-                st.pop();
+            if(countB && c == 'a') {
+                countB--;
+                del++;
             }
-            else st.push(c);
+            else if(c == 'b') countB++;
         }
         
-        return count;
+        return del;
         
         
     }
