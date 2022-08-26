@@ -15,7 +15,6 @@ public:
            index++;
            swap(arr[index], arr[high]);
            return index;
-       // Your code here
     }
     int findKthLargest(vector<int>& arr, int k) {
         int low = 0, high = arr.size()-1;
