@@ -15,7 +15,7 @@ public:
             if(tmp.size()==0 || tmp[tmp.size()-1][1]<interval[0])                                   tmp.push_back(interval);
             else
             {
-                tmp[tmp.size()-1][1] = max(tmp[tmp.size()-1][1], interval[1]);
+                tmp.back()[1] = max(tmp.back()[1], interval[1]);
             }
  
         }
