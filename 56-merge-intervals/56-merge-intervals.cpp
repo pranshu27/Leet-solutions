@@ -12,7 +12,7 @@ public:
  
         for(const vector<int> &interval: intervals)
         {
-            if(tmp.size()==0 || tmp[tmp.size()-1][1]<interval[0])                                   tmp.push_back(interval);
+            if(tmp.empty() || tmp.back()[1]<interval[0])                                            tmp.push_back(interval);
             else
             {
                 tmp.back()[1] = max(tmp.back()[1], interval[1]);
