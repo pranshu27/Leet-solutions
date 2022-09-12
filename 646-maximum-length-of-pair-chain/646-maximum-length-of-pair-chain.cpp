@@ -8,7 +8,7 @@ public:
     
     int solve(int i, int j, vector<vector<int>>& pairs, int n)
     {
-        if(i==n || j==n || i>j) return 0;
+        if(j>=n) return 0;
         
         if(pairs[i][1] < pairs[j][0])
         {
