@@ -6,7 +6,7 @@ public:
         for(int i=0; i<32; i++)
         {
             int zeros = 0, ones = 0;
-            for(auto it: nums)
+            for(const auto &it: nums)
             {
                 if(it&(1<<i)) ones++;
                 else zeros++;
