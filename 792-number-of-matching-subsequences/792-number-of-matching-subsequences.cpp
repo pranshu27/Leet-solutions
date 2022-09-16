@@ -7,11 +7,11 @@ public:
             mp[s[i]-'a'].push_back(i);
         }
         int res = 0;
-        for(const string &word: words)
+        for( auto &word: words)
         {
             bool found=true;
             int x = -1;
-            for(const char &c: word)
+            for(auto &c: word)
             {
                 vector<int> &curr = mp[c-'a'];
                 auto it = upper_bound(curr.begin(), curr.end(), x);
