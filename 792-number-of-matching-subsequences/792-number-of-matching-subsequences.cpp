@@ -1,34 +1,28 @@
 class Solution {
 public:
     int numMatchingSubseq(string s, vector<string>& words) {
-        
         vector<vector<int>> mp(26);
-        for(int i = 0; i<s.size(); i++) {
-            mp[s[i] - 'a'].push_back(i);
+        int n = s.length();
+        for(int i=0; i<n; i++) {
+            mp[s[i]-'a'].push_back(i);
         }
-        
         int res = 0;
-        
-        for(const auto &word: words){
-            bool found = true;
-            //cout<<word<<endl;
+        for(string &word: words)
+        {
+            bool found=true;
             int x = -1;
-            for(char c: word){
-                auto it = upper_bound( mp[c-'a'].begin(), mp[c-'a'].end(), x);
-                if(it==mp[c-'a'].end())
-                {
-                    found=false;
+            for(char &c: word)
+            {
+                vector<int> &curr = mp[c-'a'];
+                auto it = upper_bound(curr.begin(), curr.end(), x);
+                if(it == curr.end()){
+                    found = false;
                     break;
                 }
-                
-                else x = *it;
-                
+                x=*it;
             }
-            //cout<<endl;
             if(found) res++;
-            //cout<<res<<endl;
         }
-        
         
         return res;
     }
