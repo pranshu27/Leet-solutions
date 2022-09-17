@@ -13,7 +13,6 @@ public:
             
             while(!d.empty() && dp[d.back()]<=dp[i]) d.pop_back();
             d.push_back(i);
-
         }
         
         int maxx = INT_MIN;
