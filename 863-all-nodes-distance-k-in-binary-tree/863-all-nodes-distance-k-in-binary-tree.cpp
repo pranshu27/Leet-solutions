@@ -10,7 +10,7 @@
 class Solution {
 public:
     
-    void buildGraph(TreeNode *root, map<TreeNode *, vector<TreeNode *>> &adj)
+    void buildGraph(TreeNode *root, unordered_map<TreeNode *, vector<TreeNode *>> &adj)
     {
         if(!root) return;
         
@@ -28,12 +28,12 @@ public:
     }
     
     vector<int> distanceK(TreeNode* root, TreeNode* target, int k) {
-        map<TreeNode *, vector<TreeNode *>> adj;
+        unordered_map<TreeNode *, vector<TreeNode *>> adj;
         buildGraph(root, adj);
         
         if(k==0) return vector<int>{target->val};
         
-        map<TreeNode *, int> visited;
+        unordered_map<TreeNode *, int> visited;
         vector<int> out;
         queue<TreeNode *> q;
         q.push(target);
