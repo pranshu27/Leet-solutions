@@ -21,8 +21,8 @@ public:
             vector<TreeNode *> left = solve(l, tmp-1);
             vector<TreeNode *> right = solve(tmp+1, r);
             
-            for(auto l: left)
-                for(auto r: right)
+            for(auto &l: left)
+                for(auto &r: right)
                     ans.push_back({new TreeNode(tmp, l, r)});
             
         }
