@@ -47,7 +47,7 @@ public:
                 TreeNode *node = q.front(); 
                 q.pop();
                 visited[node] = 1;
-                for(auto it: adj[node])
+                for(const auto &it: adj[node])
                 {
                     if(!visited[it]) {
                         q.push(it);
