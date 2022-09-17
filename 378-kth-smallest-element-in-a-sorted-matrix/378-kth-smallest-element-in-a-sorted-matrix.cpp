@@ -6,7 +6,7 @@ public:
         int h = matrix[n-1][n-1];
         int mid;
         int count;
-        while(l<h)
+        while(l<=h)
         {
             count=0;
             mid = (l+h)>>1;
@@ -17,9 +17,9 @@ public:
              count += upper_bound(matrix[i].begin() , matrix[i].end(),mid) - matrix[i].begin();
                 
             }
-            
+            cout<<count<<" "<<mid<<endl;
             if(count<k) l=mid+1;
-            else h = mid;
+            else h = mid-1;
 
             }
            
