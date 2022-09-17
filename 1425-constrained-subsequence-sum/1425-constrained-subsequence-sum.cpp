@@ -1,51 +1,23 @@
 class Solution {
 public:
-    
-    int solve(vector<int>& nums, int index, int prev_index, int &k, vector<vector<int>> &dp) {
-       
-        if(index == nums.size() || (prev_index!=-1 && index-prev_index>k))
-            return 0;
-        
-        if(dp[index][prev_index+1]!=-1) return dp[index][prev_index+1];
+    int constrainedSubsetSum(vector<int>& nums, int k) {
+        int n = nums.size();
+		deque<int> d;
+        vector<int> dp(n, 0);
 
-        int take = 0, nottake = 0;
-        
-        if(prev_index==-1 || index-prev_index<=k)
+        for(int i=0; i<n; i++)
         {
-            take = dp[index+1][index+1] != -1? dp[index+1][index+1]: solve(nums, index+1, index,k, dp)+nums[index];
+            while(!d.empty() && i-d.front()>k) d.pop_front();
+            dp[i]=nums[i];
+            if(!d.empty()) dp[i] = max(dp[i], dp[i]+dp[d.front()]);
+            
+            while(!d.empty() && dp[d.back()]<=dp[i]) d.pop_back();
+            d.push_back(i);
+
         }
         
-        nottake = dp[index+1][prev_index+1]!=-1? dp[index+1][prev_index+1]: solve(nums, index+1, prev_index, k, dp);
-        
-        return dp[index][prev_index+1] =  max(take, nottake);
-        
-    } 
-    int constrainedSubsetSum(vector<int>& nums, int k) {
-		    priority_queue<array<int, 2>> que;
-		    int ret = nums[0], curr;
-		    que.push({nums[0], 0});
-		    for (int i = 1; i < nums.size(); i++) {
-		    while (!que.empty() && que.top()[1] < i - k) {
-		    que.pop();
-		    }
-		    curr = max(0, que.top()[0]) + nums[i];
-		    ret = max(ret, curr);
-		    que.push({curr, i});
-		    }
-		    return ret;
-
-//         int n = nums.size();
-//         vector<vector<int>> dp(n+1, vector<int> (n+1, -1));
-        
-//         int ans = solve(nums, 0, -1, k, dp), maxx=INT_MIN+1;
-        
-//         if(ans!=0)
-//         return ans;
-
-//         for(int i=0; i<nums.size(); i++)
-//             maxx=max(maxx, nums[i]);
-        
-
-//          return maxx;
+        int maxx = INT_MIN;
+        for(auto &it: dp) maxx = max(maxx, it);
+        return maxx;
     }
 };
