@@ -1,7 +1,7 @@
 class Solution {
 public:
     int m; 
-    map<string ,int>p;
+    unordered_map<string ,int>p;
     int solve(int i1,int j1,int i2,int j2,vector<vector<int>>& grid)
     {
         if(i1>=m||i2>=m||j1>=m||j2>=m||grid[i1][j1]==-1||grid[i2][j2]==-1)
