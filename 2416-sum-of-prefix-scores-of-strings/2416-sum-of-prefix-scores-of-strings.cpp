@@ -20,9 +20,9 @@ public:
     void insert(Node *root, string s)
     {
         Node *t = root;
-        for(const char &c: s)
+        for(int i = 0; i<s.size(); i++)
         {
-            int index = c-'a';
+            int index = s[i]-'a';
             if(t->children[index] == NULL) {
                 t->children[index] = getNode();
             }
@@ -36,9 +36,9 @@ public:
     {
         int out = 0;
         Node *t = root;
-        for(const char &c: s)
+        for(int i = 0; i<s.size(); i++)
         {
-            int index = c-'a';
+            int index = s[i]-'a';
             if(t->children[index] != NULL) {
                 out += t->children[index]->count;
             }
