@@ -30,19 +30,19 @@ public:
     }
     int lengthOfLIS(vector<int>& nums, int k) {
         int n = nums.size();
-        int x = 1;
-        while(x <= 200000) x *= 2;
+//         int x = 1;
+//         while(x <= 200000) x *= 2;
         
         
-        vector<int> tree(2*x, 0);
+        vector<int> tree(4*1e5+10, 0);
         int res=0;
         for(auto it: nums)
         {
             int left = max(1, it-k);
             int right = it-1;
-            int curr = 1+query(0,x-1,left, right, 0, tree);
+            int curr = 1+query(0,1e5,left, right, 0, tree);
             res = max(res, curr);
-            update(0, x-1, it, curr, 0, tree);
+            update(0, 1e5, it, curr, 0, tree);
         }
         
         //for(int i=0; i<20; i++) cout<<tree[i]<<" ";
