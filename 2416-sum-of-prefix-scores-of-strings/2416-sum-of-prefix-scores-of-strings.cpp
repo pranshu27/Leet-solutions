@@ -20,9 +20,9 @@ public:
     void insert(Node *root, string s)
     {
         Node *t = root;
-        for(int i = 0; i<s.size(); i++)
+        for(const char &c: s)
         {
-            int index = s[i]-'a';
+            int index = c-'a';
             if(t->children[index] == NULL) {
                 t->children[index] = getNode();
             }
@@ -36,9 +36,9 @@ public:
     {
         int out = 0;
         Node *t = root;
-        for(int i = 0; i<s.size(); i++)
+        for(const char &c: s)
         {
-            int index = s[i]-'a';
+            int index = c-'a';
             if(t->children[index] != NULL) {
                 out += t->children[index]->count;
             }
@@ -52,7 +52,6 @@ public:
         vector<int>  ans;
         Node *root = getNode();
         for(const string &w: words) insert(root, w);
-
         for(const string &w: words) ans.push_back(search(root, w));
         return ans;
     }
