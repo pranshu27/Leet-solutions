@@ -51,9 +51,9 @@ public:
     vector<int> sumPrefixScores(vector<string>& words) {
         vector<int>  ans;
         Node *root = getNode();
-        for(auto w: words) insert(root, w);
+        for(const string &w: words) insert(root, w);
 
-        for(auto w: words) ans.push_back(search(root, w));
+        for(const string &w: words) ans.push_back(search(root, w));
         return ans;
     }
 };
