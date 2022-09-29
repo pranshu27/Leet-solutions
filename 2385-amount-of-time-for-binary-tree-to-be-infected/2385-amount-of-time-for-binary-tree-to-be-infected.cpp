@@ -30,7 +30,6 @@ public:
         if(!root) return 0;
 
         adj.clear();
-        //adj.resize((int)1e5+1, vector<int>{});
         dfs(root, -1);
         
         
@@ -46,7 +45,7 @@ public:
             while(size--){
                 auto node = q.front(); q.pop();
                 
-                for(auto it: adj[node])
+                for(const auto &it: adj[node])
                 {
                     if(!visited.count(it)){
                         visited.insert(it);
