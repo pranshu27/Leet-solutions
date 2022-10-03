@@ -11,17 +11,16 @@ public:
         {
             mid = (low+high)>>1;
             count = 0;
-            int i=0; //j=1; 
+            int i=0, j=1; 
             while(i<n){
-                // while(j<n && nums[j]-nums[i]<=mid)
-                // {
-                //     j++;
-                // }
-                auto it = upper_bound(nums.begin()+i, nums.end(), nums[i]+mid);
-                //count = count + j-i-1;
-                count+=it-nums.begin()-1-i;
+                while(j<n && nums[j]-nums[i]<=mid)
+                {
+                    j++;
+                }
+                count = count + j-i-1;
                 i++;
             }
+            
             if(count<k) low = mid+1;
             else high = mid;
         }
