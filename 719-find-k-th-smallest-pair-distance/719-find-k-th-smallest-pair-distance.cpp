@@ -7,7 +7,7 @@ public:
         
         int i=0, j=1, mid, count;
         
-        while(low<high)
+        while(low<=high)
         {
             mid = (low+high)>>1;
             count = 0;
@@ -22,7 +22,7 @@ public:
             }
             
             if(count<k) low = mid+1;
-            else high = mid;
+            else high = mid-1;
         }
 
         return low;
