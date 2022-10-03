@@ -10,21 +10,28 @@ public:
         while(low<=high)
         {
             mid = (low+high)>>1;
+            
             count = 0;
-            int i=0, j=1; 
+            
+            int i=0, j=1;
+            
             while(i<n){
                 while(j<n && nums[j]-nums[i]<=mid)
                 {
                     j++;
                 }
+                
                 count = count + j-i-1;
                 i++;
             }
             
             if(count<k) low = mid+1;
             else high = mid-1;
+            
         }
-
+        
+        //cout<<low<<" "<<high<<endl;
+        
         return low;
     }
 };
