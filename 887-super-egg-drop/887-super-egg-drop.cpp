@@ -11,10 +11,10 @@ public:
         int low=0,high=f,temp=0;
         while(low<=high){
             int mid=(low+high)/2;
-            int down=solve(e-1,mid-1,t); //check down floor
-            int up=solve(e,f-mid,t);//check upper floor
-             temp=1+max(down,up);//max bcz need worst case
-            if(down<up)//for worst case changing value
+            int down=solve(e-1,mid-1,t);
+            int up=solve(e,f-mid,t);
+            temp=1+max(down,up);
+            if(down<up)
                 low=mid+1;
             else
                 high=mid-1;
