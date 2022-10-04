@@ -21,6 +21,7 @@ public:
         
         if(i1==i2&&j1==j2)temp=grid[i1][j1];
         else temp=grid[i1][j1]+grid[i2][j2];
+        
         int x1=p.count(k1)==0? solve(i1+1,j1,i2+1,j2,grid): p[k1];
         int x2=p.count(k2)==0?solve(i1+1,j1,i2,j2+1,grid): p[k2];
         int x3=p.count(k3)==0?solve(i1,j1+1,i2+1,j2,grid): p[k3];
