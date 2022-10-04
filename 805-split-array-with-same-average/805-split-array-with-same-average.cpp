@@ -40,7 +40,7 @@ public:
     bool splitArraySameAverage(vector<int>& nums) {
         
         int n = nums.size();
-        
+        sort(nums.rbegin(), nums.rend());
         // find the total sum
         
         int sum = 0;
