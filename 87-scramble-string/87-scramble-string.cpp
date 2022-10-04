@@ -13,7 +13,7 @@ public:
         
         
         int n = a.length();
-        bool flag = false;
+        // bool flag = false;
         
         for(int i=1; i<=n-1; i++)
         {
@@ -28,13 +28,12 @@ public:
             );
             
             if(swapped || not_swapped) {
-                flag = true;
-                break;
+               return  mp[key] = true;
             }
             
         }
         
-        return  mp[key] = flag;
+        return  mp[key] = false;
     }
     bool isScramble(string s1, string s2) {
         return solve(s1,s2);
