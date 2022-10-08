@@ -21,10 +21,9 @@ public:
                     closest = abs(target-sum);
                     ans = sum;
                 }
-                // cout<<nums[i]<<" "<<nums[j]<<" "<<nums[k]<<" "<<sum<<" "                        <<closest<<endl;
+ 
             }
-            
-            // closest = min(closest, abs(target-sum));   
+
         }
         
         return ans;
