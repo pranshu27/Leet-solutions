@@ -4,7 +4,7 @@ public:
     int solve(vector<int>& jobs, int d , int index ,  vector<vector<int>> &dp){
         if(n==index && d==0)
             return 0; 
-        if(n==index || d==0)
+        if(n==index || d==0 || n-index < d)
             return maxVal; 
         if(dp[index][d]!=-1)
             return dp[index][d]; 
