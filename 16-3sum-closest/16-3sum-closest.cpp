@@ -4,7 +4,7 @@ public:
         int closest = INT_MAX, ans = 0;
         int n = nums.size();
         sort(nums.begin(), nums.end());
-        for(auto it: nums) cout<<it<<" ";
+        // for(auto it: nums) cout<<it<<" ";
         cout<<endl;
         for(int i=0; i<n-2; i++)
         {
