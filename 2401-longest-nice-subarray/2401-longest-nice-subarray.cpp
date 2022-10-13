@@ -10,16 +10,41 @@ public:
             x[i]=x[i-1]^nums[i];
         }
         
+//         for(auto it:x) cout<<it<<" ";
+//         cout<<endl;
+//         for(auto it:pre) cout<<it<<" ";
+//         cout<<endl;
+        
         int maxx = 1;
         int start = 0, end = 1;
-//    
+//         while(end<n)
+//         {
+//             int a = start>0? pre[end]-pre[start-1]: pre[end];
+//             int b = start>0? x[end]^x[start-1]: x[end];
+            
+                
+            // if(a==b){
+            //     maxx = max(maxx, end-start+1);
+            // }
+//             else 
+//             {
+//                 while(a!=b)
+//                 {
+//                     start++;
+//                     a = start>0? pre[end]-pre[start-1]: pre[end];
+//                     b = start>0? x[end]-x[start-1]: x[end];
+//                 }
+//             }
+//             end++;
+//         }
+        
         for(int i=0; i<n; i++)
         {
-            for(int j = i+1; j<n; j++)
+            for(int j = i; j<n; j++)
             {
-                long long a = i>0? (pre[j]-pre[i-1]): pre[j];
-                long long b = i>0? (x[j]^x[i-1]): x[j];
-                if(a==b){
+                long long a = i>0? pre[j]-pre[i-1]: pre[j];
+                long long b = i>0? x[j]^x[i-1]: x[j];
+                    if(a==b){
                     maxx = max(maxx, j-i+1);
                 }
                 else break;
