@@ -1,19 +1,13 @@
 class Solution {
 public:
     int longestIdealString(string s, int k) {
-        int DP[26] = {0}, ans = 1;
-        
-        for (char &ch: s) {
-            int i = ch - 'a';
-            DP[i] = DP[i] + 1;
-            
-            for (int j = max(0, i - k); j <= min(25, i + k); j++)
-                if (j != i)
-                    DP[i] = max(DP[i], DP[j] + 1);
-            
-            ans = max(ans, DP[i]);
+        int dp[150] = {}, res = 0;
+        for (auto& i : s) {
+            for (int j = i - k; j <= i + k; ++j)
+                dp[i] = max(dp[i], dp[j]);
+            dp[i]++;
+            res = max(res, dp[i]);
         }
-        
-        return ans;
+        return res;
     }
 };
