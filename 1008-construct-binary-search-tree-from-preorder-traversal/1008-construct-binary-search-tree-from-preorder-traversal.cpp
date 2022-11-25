@@ -20,12 +20,8 @@ public:
         if(key>minn && key<maxx) {
             root = new TreeNode(pre[index]);
             index += 1;
-            if(index<n){
-                root->left = solve(pre, minn, key,  n);
-            }
-            if(index<n){
-                root->right = solve(pre, key, maxx, n);
-            }
+            root->left = solve(pre, minn, key,  n);
+            root->right = solve(pre, key, maxx, n);
         }
         
         return root;
