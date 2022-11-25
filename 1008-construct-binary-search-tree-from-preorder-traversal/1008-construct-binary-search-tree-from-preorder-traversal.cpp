@@ -12,18 +12,19 @@
 class Solution {
 public:
     int index;
-    TreeNode *solve(vector<int>& pre, int minn, int maxx, int key, int &n)
+    TreeNode *solve(vector<int>& pre, int minn, int maxx, int &n)
     {
         if(index>=n) return NULL;
         TreeNode *root = NULL;
+        int key = pre[index];
         if(key>minn && key<maxx) {
             root = new TreeNode(pre[index]);
             index += 1;
             if(index<n){
-                root->left = solve(pre, minn, key, pre[index], n);
+                root->left = solve(pre, minn, key,  n);
             }
             if(index<n){
-                root->right = solve(pre, key, maxx, pre[index], n);
+                root->right = solve(pre, key, maxx, n);
             }
         }
         
@@ -33,7 +34,7 @@ public:
         int n = pre.size();
         index = 0;
         
-        return solve(pre, INT_MIN, INT_MAX, pre[0], n);
+        return solve(pre, INT_MIN, INT_MAX, n);
         
     }
 };
